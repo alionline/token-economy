@@ -1,7 +1,7 @@
 import { useWeb3 } from "@3rdweb/hooks";
-import { ThirdwebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
-import React, { useMemo, useState } from "react";
+import { useState } from "react";
+import UseModule from "../useModule";
 import "./ModalComponent.css";
 
 
@@ -19,24 +19,8 @@ let newQuestion = question();
 
 function Modal({ setOpenModal }:{setOpenModal:any}) {
 
-  const { provider, address } = useWeb3();
-  const sdk = useMemo(() => {
-  if (provider) {
-    return new ThirdwebSDK(provider.getSigner())
-  
-  }
-  
-  return undefined;
-  }, [provider]);
-  
-  //instantiate the sdk
-  const tokenModule = useMemo(() => {
-  if (sdk) {
-    return sdk.getTokenModule("0x14F6991ee54Fc62Ff9E72E6f0C17e9625eDc947b")
-  }
-  
-  return undefined;
-  }, [sdk]);
+  const { address } = useWeb3();
+  const tokenModule = UseModule();
 
   const transferFrom = async () => { 
     let amount = ethers.utils.parseEther("1") 

@@ -1,9 +1,8 @@
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useState } from "react";
 import './GameModule.css';
 import ModalComponent from "./ModalComponent"
 
-//use the wallet instead of private keys
 const GameModule = () => {
 
 let [showModal, setModal] = useState(false);
