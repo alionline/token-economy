@@ -4,6 +4,7 @@ import TokenComponent from './components/TokenModule/TokenComponent';
 import Buttons from './components/userbuttons/buttons';
 import Card from './components/card/Card'
 import GameModule from './components/gamemodule/GameModule';
+import ApproveComponent from './components/approvemodule/ApproveComponent';
 
 
 const supportedChainIds = [1, 4, 137, 250, 43114, 80001];
@@ -47,8 +48,9 @@ function App() {
       <div className='game-container'>
         <GameModule/>
       </div>
-
-      <TokenComponent />
+      <div className='buttonss'>
+      <ApproveComponent/>
+      </div>
       
     </ThirdwebProvider>
   );

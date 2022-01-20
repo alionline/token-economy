@@ -21,16 +21,17 @@ function Modal({ setOpenModal }:{setOpenModal:any}) {
 
   const { address } = useWeb3();
   const tokenModule = UseModule();
-
+  
   const transferFrom = async () => { 
-    let amount = ethers.utils.parseEther("1") 
+    let amount = ethers.utils.parseEther("1");
     await tokenModule!.transferFrom("0x71E48d0a82CD7f433876eDa098B6A9C125698B11", address!, amount)
-      .then((data: any) => console.log(data))
+      .then((data: any) => { console.log(data)})
       .catch((error: any) => console.error(error));
     };
 
+    
+
     const checkAnswer = (givenAnswer:any, currentQuestion:any) => {
-      console.log(givenAnswer, currentQuestion)
         if(givenAnswer == currentQuestion.answer){
           transferFrom();
           alert("nice, you won 1 token!")

@@ -6,15 +6,15 @@ import './buttons.css';
 
 //use the wallet instead of private keys
 const Buttons = () => {
-  const { provider } = useWeb3();
+  const { provider , address } = useWeb3();
   let [mintInputValue, setMintInputValue] = useState('');
   let [burnInputValue, setBurnInputValue] = useState('');
 
   const tokenModule = UseModule();
 
-  const mint = async (amount: any) => {
+  const mintTo = async (amount: any) => {
     amount = ethers.utils.parseEther(amount)
-    await tokenModule!.mint(amount)
+    await tokenModule!.mintTo(address!, amount)
       .then((data: any) => console.log(data))
       .catch((error: any) => console.error(error));
   };
@@ -35,7 +35,7 @@ const Buttons = () => {
           value={mintInputValue}
           onChange={e => setMintInputValue(e.target.value)}
         />
-        <button type="button" onClick={() => { mint(mintInputValue) }}>mint</button>
+        <button type="button" onClick={() => { mintTo(mintInputValue) }}>Mint</button>
 
       </div>
       <div className="input-btn-container">
@@ -44,12 +44,8 @@ const Buttons = () => {
           value={burnInputValue}
           onChange={e => setBurnInputValue(e.target.value)}
         />
-        <button type="button" onClick={() => { burn(burnInputValue) }}>burn</button>
+        <button type="button" onClick={() => { burn(burnInputValue) }}>Burn</button>
       </div>
-
-      {/* <div className="input-btn-container">
-  <button>weetneit</button> 
-  </div> */}
 
     </>
   );
